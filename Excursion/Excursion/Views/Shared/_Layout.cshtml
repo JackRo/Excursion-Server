@@ -1,0 +1,120 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/CSS/style.css" rel="stylesheet" />
+    <script src="~/JavaScripts/JS.js"></script>
+    <script src="~/JavaScripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#btnSysManage").click(function() {
+                location.href = "http://localhost:37145/System/SystemManage";
+            });
+            $("#btnUserManage").click(function() {
+                location.href = "http://localhost:37145/User/UserManage";
+            });
+            $("#btnSightSpotManage").click(function() {
+                location.href = "http://localhost:37145/Attraction/AttractionManage";
+            });
+            $("#btnCommunityManage").click(function() {
+                location.href = "http://localhost:37145/Community/CommunityManage";
+            });
+            $("#btnStageNameManage").click(function() {
+                location.href = "http://localhost:37145/Stage/StageManage";
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="form1">
+        <div class="header">
+            <div class="header03"></div>
+            <div class="header01"></div>
+            <div class="header02">短途游信息管理系统</div>
+        </div>
+        <div class="left" id="LeftBox">
+            <div class="left01">
+                <div class="left01_right"></div>
+                <div class="left01_left"></div>
+                <div class="left01_c">超级管理员：admin</div>
+            </div>
+            <div class="left02">
+                <div class="left02top">
+                    <div class="left02top_right"></div>
+                    <div class="left02top_left"></div>
+                    <div class="left02top_c">
+                        @*<asp:Button ID="btnSysManage" Text="系统管理" Width="118px" BackColor="White" BorderColor="White" BorderStyle="None" />*@
+                        <input type="button" id="btnSysManage" value="系统管理" width="118" style="background-color: white; border-color: white;border-style: none"/>
+                    </div>
+                </div>
+                <div class="left02down">
+                    <div class="left02down01"><a href="#"><div class="left02down01_img"></div>权限管理</a></div>
+                    <div class="left02down01"><a href="#"><div class="left02down01_img"></div>用户组管理</a></div>
+                    <div class="left02down01"><a href="#"><div class="left02down01_img"></div>操作日志</a></div>
+                </div>
+            </div>
+            <div class="left02">
+                <div class="left02top">
+                    <div class="left02top_right"></div>
+                    <div class="left02top_left"></div>
+                    <div class="left02top_c">
+                        @*<asp:Button ID="btnUser" Text="用户信息管理" Width="118px" BackColor="White" BorderColor="White" BorderStyle="None" />*@
+                        <input type="button" id="btnUserManage" value="用户信息管理" width="118" style="background-color: white; border-color: white;border-style: none"/>
+                    </div>
+                </div>
+            </div>
+            <div class="left02">
+                <div class="left02top">
+                    <div class="left02top_right"></div>
+                    <div class="left02top_left"></div>
+                    <div class="left02top_c">
+                        @*<asp:Button ID="btnSightSpotManage" Text="景点信息管理" Width="118px" BackColor="White" BorderColor="White" BorderStyle="None" OnClick="btnSightSpotManage_Click" />*@
+                        <input type="button" id="btnSightSpotManage" value="景点信息管理" width="118" style="background-color: white; border-color: white; border-style: none;"/>
+                    </div>
+                </div>
+
+            </div>
+            <div class="left02">
+                <div class="left02top">
+                    <div class="left02top_right"></div>
+                    <div class="left02top_left"></div>
+                    <div class="left02top_c">
+                        @*<asp:Button ID="btnCommunityManage" Text="社区信息管理" Width="118px" BackColor="White" BorderColor="White" BorderStyle="None" OnClick="btnCommunityManage_Click" />*@
+                        <input type="button" id="btnCommunityManage" value="社区信息管理" width="118" style="background-color: white; border-color: white;border-style: none"/>
+                    </div>
+                </div>
+            </div>
+            <div class="left02">
+                <div class="left02top">
+                    <div class="left02top_right"></div>
+                    <div class="left02top_left"></div>
+                    <div class="left02top_c">
+                        @*<asp:Button ID="btnStageNameManage" Text="花名库管理" Width="118px" BackColor="White" BorderColor="White" BorderStyle="None" OnClick="btnStageNameManage_Click" />*@
+                        <input type="button" id="btnStageNameManage" value="花名库管理" width="118" style="background-color: white; border-color: white;border-style: none"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="left01">
+                <div class="left03_right"></div>
+                <div class="left01_left"></div>
+                <div class="left03_c">安全退出</div>
+            </div>
+        </div>
+        <div class="rrcc" id="RightBox">
+            <div class="center" id="Mobile" onclick="show_menuC()"></div>
+            <div class="right" id="li010">
+                <div class="right01">
+                    @RenderSection("Content",false)
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

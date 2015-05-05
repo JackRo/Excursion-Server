@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Excursion.Models.Admin>
+
+@{
+    ViewBag.Title = "SystemManage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    string result = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+    result = string.IsNullOrEmpty(result) ? HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"] : HttpContext.Current.Request.UserHostAddress;
+}
+
+<h2>SystemManage</h2>
+
+@section Content
+{
+    <table>
+        <tr>
+            <th>登录者</th>
+            <th>登录IP</th>
+            <th>服务器软件</th>
+            <th>操作系统</th>
+            <th>.NET版本</th>
+            <th>SQL SERVER版本</th>
+            <th>当前时间</th>
+            <th>程序版本</th>
+            <th>使用域名</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                <td>@result</td>
+                <td>IIS</td>
+                <td>WINNT</td>
+                <td>.NET 4.5</td>
+                <td>12.0</td>
+                <td>@DateTime.Now</td>
+                <td>1.0</td>
+                <td>http://www.baidu.com</td>
+            </tr>
+        }
+    </table>
+}     

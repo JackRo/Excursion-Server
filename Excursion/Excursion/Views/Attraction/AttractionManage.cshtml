@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Excursion.Models.ScenicSpot>
+
+@{
+    ViewBag.Title = "AttractionManage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AttractionManage</h2>
+
+@section Content
+{
+    <table >
+        <tr>
+            <th>
+                景点Id
+            </th>
+            <th>
+                景点名称
+            </th>
+            <th>
+                景点描述
+            </th>
+            <th>
+                景点图片地址
+            </th>
+            <th>
+                景点类别
+            </th>
+            <th>
+                删除
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Describe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SsImage)
+                </td>
+                <td>
+                    @(item.Address == 0 ? "江西" : "浙江")
+                </td>
+                <td>
+                    @Html.ActionLink("删除", "Delete", new {id = item.Id})
+                </td>
+            </tr>
+        }
+
+    </table>
+}

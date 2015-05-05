@@ -1,0 +1,120 @@
+﻿@using Excursion.Models
+@model IEnumerable<Excursion.Models.Stage>
+
+@{
+    ViewBag.Title = "StageManage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StageManage</h2>
+
+@section Content
+{
+    <table>
+        <tr>
+            <th>
+                花名
+            </th>
+            <th>
+                人物性别
+            </th>
+            <th>
+                人物性格
+            </th>
+            <th>
+                人物地域
+            </th>
+            <th>
+                人物出处
+            </th>
+            <th>
+                操作
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @{
+                        Sex sex;                        
+                        using (var db = new ExcursionDbContext())
+                        {
+                            var item1 = item;
+                            var query = from s in db.Sexs
+                                where s.Id == item1.SexId
+                                select s;
+                            sex = query.FirstOrDefault();
+                        }
+                        if (sex != null)
+                        {
+                            @(sex.Gender ? "男" : "女")
+                        }
+                        else
+                        {
+                            @("数据库数据错误，请联系开发商")
+                        }
+                    }
+                </td>
+                <td>
+                    @{
+                        Nature nature;
+                        using (var db = new ExcursionDbContext())
+                        {
+                            var item1 = item;
+                            var query = from n in db.Natures
+                                where n.Id == item1.NatureId
+                                select n;
+                            nature = query.FirstOrDefault();
+                        }
+                        if (nature != null)
+                        {
+                            @Html.DisplayFor(n => nature.NType)
+                        }
+                    }
+                </td>
+                <td>
+                    @{
+                        Territory territory;
+                        using (var db = new ExcursionDbContext())
+                        {
+                            var item1 = item;
+                            var query = from t in db.Territorys
+                                where t.Id == item1.TerritoryId
+                                select t;
+                            territory = query.FirstOrDefault();
+                        }
+                        if (territory != null)
+                        {
+                            @Html.DisplayFor(t => territory.Name)
+                        }
+                    }                    
+                </td>
+                <td>
+                    @{
+                        Provenace provenace;
+                        using (var db = new ExcursionDbContext())
+                        {
+                            var item1 = item;
+                            var query = from p in db.Provenaces
+                                where p.Id == item1.ProvenaceId
+                                select p;
+                            provenace = query.FirstOrDefault();
+                        }
+                        if (provenace != null)
+                        {
+                            @Html.DisplayFor(p => provenace.ProStyle)
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("删除", "Delete", new {id = item.Id})
+                </td>
+            </tr>
+        }
+
+    </table>
+}
