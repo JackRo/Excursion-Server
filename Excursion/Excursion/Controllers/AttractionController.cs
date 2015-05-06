@@ -12,14 +12,23 @@ namespace Excursion.Controllers
         //
         // GET: /Attraction/
 
-        public ActionResult AttractionManage()
+        public ActionResult AttractionManage(string page)
         {
+            if (page == null)
+            {
+                page = "1";
+            }
             List<ScenicSpot> scenicSpots;
             using (var db = new ExcursionDbContext())
             {
                 var query = from s in db.ScenicSpots
                     select s;
-                scenicSpots = query.ToList();
+                var queryCut = query.OrderBy(s =>s.Id).Skip((int.Parse(page) - 1) * 20).Take(20);
+                scenicSpots = queryCut.ToList();
+                if (scenicSpots.Count <=0)
+                {
+                    Response.Redirect("http://localhost:37145/Attraction/AttractionManage?page=" + query.Count() / 20);
+                }
             }
             return View(scenicSpots);
         }

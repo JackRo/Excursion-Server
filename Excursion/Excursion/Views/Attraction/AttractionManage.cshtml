@@ -9,7 +9,9 @@
 
 @section Content
 {
-    <table >
+    <link href="~/CSS/table.css" rel="stylesheet"/>
+<div>
+    <table>
         <tr>
             <th>
                 景点Id
@@ -56,4 +58,18 @@
         }
 
     </table>
+    @{
+        int page = 1;
+        int.TryParse(Request.QueryString["page"], out page);
+        if (page <= 0)
+        {
+            page = 1;
+        }
+    }
+    <div>
+        @(page == 1 ? Html.ActionLink("上一页", "AttractionManage", new { page }) : Html.ActionLink("上一页", "AttractionManage", new { page = page - 1 }))
+        <strong> 当前页：@page </strong>
+        @Html.ActionLink("下一页", "AttractionManage", new { page = page + 1 })
+    </div>
+</div>
 }

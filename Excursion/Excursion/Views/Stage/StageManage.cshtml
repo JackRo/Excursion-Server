@@ -1,4 +1,5 @@
 ﻿@using Excursion.Models
+
 @model IEnumerable<Excursion.Models.Stage>
 
 @{
@@ -10,6 +11,8 @@
 
 @section Content
 {
+    <link href="~/CSS/table.css" rel="stylesheet"/>
+<div>
     <table>
         <tr>
             <th>
@@ -40,7 +43,7 @@
                 </td>
                 <td>
                     @{
-                        Sex sex;                        
+                        Sex sex;
                         using (var db = new ExcursionDbContext())
                         {
                             var item1 = item;
@@ -91,7 +94,7 @@
                         {
                             @Html.DisplayFor(t => territory.Name)
                         }
-                    }                    
+                    }
                 </td>
                 <td>
                     @{
@@ -115,6 +118,19 @@
                 </td>
             </tr>
         }
-
     </table>
+@{
+    int page = 1;
+    int.TryParse(Request.QueryString["page"], out page);
+    if (page <= 0)
+    {
+        page = 1;
+    }
+}
+    <div>
+        @(page == 1 ? Html.ActionLink("上一页", "StageManage", new {page}) : Html.ActionLink("上一页", "StageManage", new {page = page - 1}))
+        <strong> 当前页：@page </strong>     
+        @Html.ActionLink("下一页", "StageManage", new { page = page + 1 })
+    </div>
+</div>
 }

@@ -46,6 +46,12 @@
       <HintPath>..\..\..\..\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorJS.0.4.3\lib\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorJS">
+      <HintPath>..\packages\RazorJS.0.4.3\lib\RazorJS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -150,6 +156,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="CSS\Login.css" />
     <Content Include="CSS\style.css" />
+    <Content Include="CSS\table.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\01.gif" />
     <Content Include="Images\02.gif" />
@@ -1160,6 +1167,8 @@
     <Content Include="Images\buttom-copy-bg.gif" />
     <Content Include="Images\buttom-left.gif" />
     <Content Include="Images\buttom-right.gif" />
+    <Content Include="Images\cell-blue.jpg" />
+    <Content Include="Images\cell-grey.jpg" />
     <Content Include="Images\center.gif" />
     <Content Include="Images\center0.gif" />
     <Content Include="Images\content-bg.gif" />
